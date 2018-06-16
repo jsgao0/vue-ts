@@ -1,0 +1,56 @@
+@mixin flexGridSystem($max-grid) {
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    &.ali-top {
+      align-content: flex-start;
+    }
+    &.ali-bottom {
+      align-content: flex-end;
+    }
+    &.ali-center {
+      align-content: center;
+    }
+    &.ali-stretch {
+      align-content: stretch;
+    }
+    &.ali-baseline {
+      align-content: baseline;
+    }
+    &.jus-left {
+      justify-content: flex-start;
+    }
+    &.jus-right {
+      justify-content: flex-end;
+    }
+    &.jus-center {
+      justify-content: center;
+    }
+    &.jus-between {
+      justify-content: space-between;
+    }
+    &.jus-around {
+      justify-content: space-around;
+    }
+    &.ali-top {
+      align-items: flex-start;
+    }
+    &.ali-bottom {
+      align-items: flex-end;
+    }
+    &.ali-center {
+      align-items: center;
+    }
+    &.ali-stretch {
+      align-items: stretch;
+    }
+    &.ali-baseline {
+      align-items: baseline;
+    }
+    @for $i from 1 through $max-grid {
+      .col-#{$i} {
+        width: 100% / $max-grid * $i;
+      }
+    }
+  }
+}

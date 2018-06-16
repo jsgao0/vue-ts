@@ -1,0 +1,12 @@
+{
+  "route": [
+    {
+      "path": "*",
+      "html": "/index.html"
+    },
+    {
+      "path": "/**/*",
+      "html": "/index.html"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "name": "vue-ts",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KenFront/vue-ts.git"
+  },
+  "author": "Ken",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KenFront/vue-ts/issues"
+  },
+  "homepage": "https://github.com/KenFront/vue-ts#readme",
+  "main": "src/app/index.ts",
+  "scripts": {
+    "lint": "prettier --write 'src/**/*.{js,ts,tsx,scss}' && tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "clean": "node scripts/deleteFolder",
+    "web:dev": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.dev.js",
+    "web:prod": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.prod.js",
+    "web:watch": "webpack-dev-server --config webpack/webpack.config.dev.js",
+    "web:preview": "npm run web:prod && node server.js",
+    "stop-node-server-mac": "killall node",
+    "test:unit": "jest --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.0",
+    "@types/node": "^10.3.3",
+    "@vue/test-utils": "^1.0.0-beta.19",
+    "animate.css": "^3.6.1",
+    "autoprefixer": "^8.6.2",
+    "babel-eslint": "^8.2.3",
+    "copy-webpack-plugin": "^4.5.1",
+    "core-js": "^2.5.7",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-vue": "^4.5.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.1.0",
+    "license-webpack-plugin": "^1.3.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "normalize.css": "^8.0.0",
+    "postcss-loader": "^2.1.5",
+    "prettier": "^1.13.5",
+    "sass-loader": "^7.0.3",
+    "ts-jest": "^22.4.6",
+    "ts-loader": "^4.4.1",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "vue": "^2.5.16",
+    "vue-jest": "^2.6.0",
+    "vue-loader": "^15.2.4",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "vuex": "^3.0.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.7",
+    "webpack-dev-server": "^3.1.4",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "engines": {
+    "node": ">= 8.11.1",
+    "npm": ">=6.0.0",
+    "vscode": "^1.22.2"
+  },
+  "config": {
+    "server": {
+      "port": 3000,
+      "testResultFolder": "report"
+    },
+    "baseHref": {
+      "development": "/",
+      "production": "/"
+    },
+    "jsPath": {
+      "development": "js/[name].[hash].js",
+      "production": "js/[name].[chunkhash].js"
+    },
+    "buildFolder": "build"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 11"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      },
+      "vue-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.vue$": "vue-jest"
+    },
+    "testRegex": "(test|spec)\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/src/test/styleMock.js"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "google",
+      "plugin:vue/recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "vue"
+    ],
+    "rules": {
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "semi": [
+        2,
+        "never"
+      ],
+      "semi-spacing": 2,
+      "max-len": "off",
+      "require-jsdoc": "off",
+      "quote-props": [
+        "error",
+        "as-needed"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "build/**/",
+    "coverage/**/",
+    "node_modules/**/",
+    "storybook/**/"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
