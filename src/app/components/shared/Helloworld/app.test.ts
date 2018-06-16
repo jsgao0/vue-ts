@@ -8,7 +8,6 @@ describe('global/paginate', () => {
         msg: text,
       },
     })
-    // console.log(wrapper)
     expect(wrapper.find('.hello h1').text()).toEqual(text)
   })
 })

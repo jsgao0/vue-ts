@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-
+const Home = () => import(/* webpackChunkName: "Home" */ './views/Home.vue')
+const About = () => import(/* webpackChunkName: "About" */ './views/About.vue')
+const Error = () => import(/* webpackChunkName: "Error" */ './views/Error.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -17,6 +17,11 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About,
+    },
+    {
+      path: '*',
+      name: 'error',
+      component: Error,
     },
   ],
 })
