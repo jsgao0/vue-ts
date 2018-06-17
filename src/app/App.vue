@@ -13,11 +13,15 @@ import { apiDomain } from '@/env/env'
 import { ReqGet, ReqPost, ReqPut, ReqPatch, ReqDelete } from '@/utils/request'
 export default Vue.extend({
   created() {
-    ReqGet(apiDomain.self, 'example', { a: '1' }).then((res: {}) =>
+    ReqGet(apiDomain.self, 'example', { id: '1' }).then((res: {}) =>
       console.log(res),
     )
-    ReqPost(apiDomain.self, 'example', { b: 2 }).then((res: {}) => console.log(res))
-    ReqPut(apiDomain.self, 'example', { c: 3 }).then((res: {}) => console.log(res))
+    ReqPost(apiDomain.self, 'example', { data: new Date() }).then((res: {}) =>
+      console.log(res),
+    )
+    ReqPut(apiDomain.self, 'example', { data: {} }).then((res: {}) =>
+      console.log(res),
+    )
     ReqPatch(apiDomain.self, 'example', { d: 4 }).then((res: {}) =>
       console.log(res),
     )

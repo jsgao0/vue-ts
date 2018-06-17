@@ -21,10 +21,7 @@ const corsHandler = (req, res, next) => {
   )
   next()
 }
-app
-  .use(express.json())
-  .use(express.urlencoded({ extended: false }))
-  .use(corsHandler)
+app.use(express.json()).use(corsHandler)
 const exist = (filePath) => {
   try {
     fs.accessSync(filePath)
@@ -41,10 +38,81 @@ const apiFolders = {
   delete: path.resolve(`${fakeFolder}/delete`),
 }
 
-const resFn = (req, res, method, filePath) => {
-  console.log(method, req.query, req.body)
-  res.json(JSON.parse(fs.readFileSync(`${filePath}/success.json`, 'utf8')))
+const types = {
+  Object: 1,
+  Array: 2,
+  Number: 3,
+  Boolean: 4,
+  String: 5,
+  Undefined: 6,
+  Error: 7,
 }
+
+const getType = (val) => {
+  switch (typeof val) {
+    case 'object':
+      if (Array.isArray(val)) {
+        return types.Array
+      } else {
+        return types.Object
+      }
+    case 'number':
+      return types.Number
+    case 'boolean':
+      return types.Boolean
+    case 'string':
+      return types.String
+    case 'undefined':
+      return types.Undefined
+    default:
+      return types.Error
+  }
+}
+
+const typeCheck = ({ val, expect }) => {
+  const result = getType(expect) === getType(val)
+  if (result) {
+    switch (getType(expect)) {
+      case [types.Object]:
+        return Object.keys(expect).every((e) =>
+          typeCheck({ expect: expect[e], val: val[e] }),
+        )
+      case [types.Array]:
+        return expect.every((e) =>
+          typeCheck({ expect: expect[e], val: val[e] }),
+        )
+      default:
+        return result
+    }
+  } else {
+    return result
+  }
+}
+
+const checkReqFn = ({ vals, expects }) => {
+  return Object.keys(expects).every((e) =>
+    typeCheck({ expect: expects[e], val: vals[e] }),
+  )
+}
+
+const resFn = (req, res, method, filePath) => {
+  const result =
+    method === 'get'
+      ? checkReqFn({
+          vals: req.query,
+          expects: JSON.parse(fs.readFileSync(`${filePath}/req.json`, 'utf8')),
+        })
+      : checkReqFn({
+          vals: req.body,
+          expects: JSON.parse(fs.readFileSync(`${filePath}/req.json`, 'utf8')),
+        })
+  if (result) {
+    res.json(JSON.parse(fs.readFileSync(`${filePath}/success.json`, 'utf8')))
+  } else {
+    res.json(JSON.parse(fs.readFileSync(`${filePath}/fail.json`, 'utf8')))
+  }
+}
+
 const generateAPI = (filePath, method) => {
   if (exist(filePath)) {
     fs.readdirSync(filePath).forEach((file, index) => {
@@ -89,10 +157,10 @@ const generateAPI = (filePath, method) => {
     })
   }
 }
-for (let i in apiFolders) {
-  if (apiFolders.hasOwnProperty(i)) {
-    generateAPI(apiFolders[i], i)
-  }
-}
+
+Object.keys(apiFolders).forEach((e) => {
+  generateAPI(apiFolders[e], e)
+})
+
 app.listen(apiPort)
 console.log('running', `http://localhost:${apiPort}`)

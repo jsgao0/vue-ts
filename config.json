@@ -10,9 +10,17 @@
     "development": "js/[name].[hash].js",
     "production": "js/[name].[chunkhash].js"
   },
-  "apiPath": [
+  "global": [
     {
       "name": "self",
+      "path": {
+        "fake": "//localhost:3001/api/",
+        "development": "/api",
+        "production": "/api"
+      }
+    },
+    {
+      "name": "assetsPath",
       "path": {
         "fake": "//localhost:3001/api/",
         "development": "//localhost:3001/api/",

@@ -19,9 +19,10 @@
     "web:dev": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.dev.js",
     "web:prod": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.prod.js",
     "web:watch": "webpack-dev-server --config webpack/webpack.config.dev.js",
-    "web:preview": "npm run web:prod && node server.js",
     "stop-node-server-mac": "killall node",
-    "api:fake": "node api.js",
+    "fake:api": "node api.js",
+    "fake:dev": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.fake.js",
+    "fake:watch": "webpack-dev-server --config webpack/webpack.config.fake.js",
     "test:unit": "jest --coverage"
   },
   "devDependencies": {
