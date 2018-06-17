@@ -18,7 +18,7 @@ const prod = {
       additionalPackages: base.entry.vendors,
     }),
     envHandler.html(env),
-    envHandler.api(env),
+    envHandler.globalEnv(env),
   ],
 }
 

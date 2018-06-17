@@ -6,7 +6,7 @@ const {
   name,
   jsFileName,
   buildFolder,
-  apiPath,
+  global,
 } = require('./jsonReader')
 
 const html = (env) =>
@@ -31,9 +31,9 @@ const output = (env) => ({
   chunkFilename: jsFileName[env],
   filename: jsFileName[env],
 })
-const api = (env) => {
+const globalEnv = (env) => {
   const config = {}
-  apiPath.forEach((e) => {
+  global.forEach((e) => {
     config[e.name] = e.path[env]
   })
   return new EnvironmentPlugin(config)
@@ -41,5 +41,5 @@ const api = (env) => {
 module.exports = {
   html,
   output,
-  api,
+  globalEnv,
 }

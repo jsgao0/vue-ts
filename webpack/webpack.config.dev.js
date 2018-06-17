@@ -21,7 +21,7 @@ const dev = {
   plugins: [
     ...base.plugins,
     envHandler.html(env),
-    envHandler.api(env),
+    envHandler.globalEnv(env),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {

@@ -10,7 +10,7 @@ Object.keys(tsConfig.compilerOptions.paths).map((e) => {
   alias[e.substr(0, e.length - 2)] = path.resolve(val.substr(0, val.length - 1))
 })
 const ecma = Number(tsConfig.compilerOptions.target.substr(2))
-const { baseHref, jsFileName, buildFolder, apiPath } = configJson
+const { baseHref, jsFileName, buildFolder, global } = configJson
 
 module.exports = {
   baseHref,
@@ -18,5 +18,5 @@ module.exports = {
   ecma,
   jsFileName,
   buildFolder,
-  apiPath,
+  global,
 }
