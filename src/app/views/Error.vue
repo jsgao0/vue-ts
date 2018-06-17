@@ -7,8 +7,8 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-import store from '@store/index'
-import lazyTest from '@store/lazyTest/'
+import store from '@/store/index'
+import lazyTest from '@/store/lazyTest/'
 
 store.registerModule(['lazyTest'], lazyTest)
 export default Vue.extend({

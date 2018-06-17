@@ -1,0 +1,29 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "baseHref": {
+    "development": "/",
+    "production": "/"
+  },
+  "jsFileName": {
+    "development": "js/[name].[hash].js",
+    "production": "js/[name].[chunkhash].js"
+  },
+  "apiPath": [
+    {
+      "name": "self",
+      "path": {
+        "fake": "//localhost:3001/api/",
+        "development": "//localhost:3001/api/",
+        "production": "/api"
+      }
+    }
+  ],
+  "buildFolder": "build",
+  "fakeAPI": {
+    "folder": "src/api",
+    "port": 3001,
+    "main": "/api"
+  }
+}

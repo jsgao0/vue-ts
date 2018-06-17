@@ -1,4 +1,3 @@
-const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const envHandler = require('./envHandler')
@@ -9,7 +8,7 @@ const dev = {
   ...base,
   mode: env,
   devtool: 'source-map',
-  output: envHandler.outputHandler(env),
+  output: envHandler.output(env),
   optimization: {
     ...base.optimization,
     nodeEnv: env,
@@ -21,7 +20,8 @@ const dev = {
   },
   plugins: [
     ...base.plugins,
-    envHandler.htmlHandler(env),
+    envHandler.html(env),
+    envHandler.api(env),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
@@ -38,12 +38,6 @@ const dev = {
     open: true,
     hot: true,
     inline: true,
-    after(app) {
-      app.get('/sw.js', (req, res) => {
-        res.set({ 'Content-Type': 'application/javascript; charset=utf-8' })
-        res.send(fs.readFileSync('build/sw.js'))
-      })
-    },
   },
 }
 module.exports = dev
