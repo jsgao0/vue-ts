@@ -21,6 +21,7 @@
     "web:watch": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "web:preview": "npm run web:prod && node server.js",
     "stop-node-server-mac": "killall node",
+    "api:fake": "node api.js",
     "test:unit": "jest --coverage"
   },
   "devDependencies": {
@@ -67,21 +68,6 @@
     "npm": ">=6.0.0",
     "vscode": "^1.22.2"
   },
-  "config": {
-    "server": {
-      "port": 3000,
-      "testResultFolder": "report"
-    },
-    "baseHref": {
-      "development": "/",
-      "production": "/"
-    },
-    "jsPath": {
-      "development": "js/[name].[hash].js",
-      "production": "js/[name].[chunkhash].js"
-    },
-    "buildFolder": "build"
-  },
   "browserslist": [
     ">1%",
     "last 4 versions",
@@ -117,6 +103,7 @@
       "vue"
     ],
     "moduleNameMapper": {
+      "@/(.*)$": "<rootDir>/$1",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/src/test/styleMock.js"
     }

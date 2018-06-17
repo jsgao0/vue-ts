@@ -5,7 +5,7 @@ const env = 'production'
 const prod = {
   ...base,
   mode: env,
-  output: envHandler.outputHandler(env),
+  output: envHandler.output(env),
   optimization: {
     ...base.optimization,
     nodeEnv: env,
@@ -17,7 +17,8 @@ const prod = {
       outputFilename: 'assets/licenses.txt',
       additionalPackages: base.entry.vendors,
     }),
-    envHandler.htmlHandler(env),
+    envHandler.html(env),
+    envHandler.api(env),
   ],
 }
 

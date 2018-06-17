@@ -15,7 +15,6 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "jsx": "react",
     "lib": ["dom", "es2017"]
   },
   "include": ["src/app/**/*"],

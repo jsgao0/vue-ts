@@ -1,9 +1,16 @@
 const path = require('path')
+const { EnvironmentPlugin } = require('webpack')
 const HTMLPlugin = require('html-webpack-plugin')
-const { baseHref, name, jsPath, buildFolder } = require('./jsonReader')
+const {
+  baseHref,
+  name,
+  jsFileName,
+  buildFolder,
+  apiPath,
+} = require('./jsonReader')
 
-const htmlHandler = (env) => {
-  return new HTMLPlugin({
+const html = (env) =>
+  new HTMLPlugin({
     title: name,
     baseHref: baseHref[env],
     template: './src/template/index.html',
@@ -19,15 +26,20 @@ const htmlHandler = (env) => {
       minifyCSS: true,
     },
   })
-}
-const outputHandler = (env) => {
-  return {
-    path: path.resolve(buildFolder),
-    chunkFilename: jsPath[env],
-    filename: jsPath[env],
-  }
+const output = (env) => ({
+  path: path.resolve(buildFolder),
+  chunkFilename: jsFileName[env],
+  filename: jsFileName[env],
+})
+const api = (env) => {
+  const config = {}
+  apiPath.forEach((e) => {
+    config[e.name] = e.path[env]
+  })
+  return new EnvironmentPlugin(config)
 }
 module.exports = {
-  htmlHandler,
-  outputHandler,
+  html,
+  output,
+  api,
 }

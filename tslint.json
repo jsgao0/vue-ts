@@ -5,7 +5,7 @@
   "rules": {
     "semicolon": [true, "never"],
     "interface-name": false,
-    "quotemark": [true, "single", "jsx-double"],
+    "quotemark": [true, "single"],
     "no-console": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
