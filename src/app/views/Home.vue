@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from '@components/shared/HelloWorld/app.vue'
+import HelloWorld from '@/components/shared/HelloWorld/app.vue'
 
 export default Vue.extend({
   name: 'home',

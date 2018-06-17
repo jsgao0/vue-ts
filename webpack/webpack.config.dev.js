@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const envHandler = require('./envHandler')
 const base = require('./webpack.config.base')
 const { buildFolder } = require('./jsonReader')
@@ -23,6 +24,12 @@ const dev = {
     ...base.plugins,
     envHandler.htmlHandler(env),
     new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/api/',
+        to: 'api',
+      },
+    ]),
   ],
   devServer: {
     contentBase: path.join(buildFolder),

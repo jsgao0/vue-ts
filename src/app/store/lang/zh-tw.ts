@@ -1,4 +1,4 @@
-import lang from '@langs/zh-tw.json'
+import lang from '@/langs/zh-tw.json'
 export default {
   state: {
     lang,

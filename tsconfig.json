@@ -9,12 +9,7 @@
     "strict": true,
     "baseUrl": "./src/",
     "paths": {
-      "@components/*": ["app/components/*"],
-      "@langs/*": ["app/langs/*"],
-      "@store/*": ["app/store/*"],
-      "@views/*": ["app/views/*"],
-      "@utils/*": ["app/utils/*"],
-      "@env/*": ["app/env/*"]
+      "@/*": ["app/*"]
     },
     "module": "esnext",
     "moduleResolution": "node",

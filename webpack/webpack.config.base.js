@@ -2,6 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { alias, ecma } = require('./jsonReader')
 
@@ -137,5 +138,6 @@ module.exports = {
       },
     ]),
     new VueLoaderPlugin(),
+    new ManifestPlugin(),
   ],
 }

@@ -8,6 +8,7 @@ app
   .use('/assets', express.static(`${pubicPath}/assets`))
   .use('/js', express.static(`${pubicPath}/js`))
   .use('/css', express.static(`${pubicPath}/css`))
+  .use('/api', express.static(`${pubicPath}/api`))
 route.forEach((e) => {
   app.get(e.path, (req, res) => {
     res.sendFile(`${__dirname}/${pubicPath}${e.html}`)

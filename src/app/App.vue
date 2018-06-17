@@ -7,6 +7,15 @@
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+import { ReqGet } from "@/utils/request"
+export default Vue.extend({
+  created(){
+    ReqGet('testGet.json',{}).then(res => console.log(res));
+  }
+})
+</script>
 
 <style lang="scss">
 @import './scss/variable.scss';
