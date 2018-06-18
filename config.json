@@ -22,9 +22,9 @@
     {
       "name": "assetsPath",
       "path": {
-        "fake": "//localhost:3001/api/",
-        "development": "//localhost:3001/api/",
-        "production": "/api"
+        "fake": "assets",
+        "development": "assets",
+        "production": "assets"
       }
     }
   ],

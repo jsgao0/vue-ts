@@ -1,54 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <layout>
     <router-view/>
-  </div>
+  </layout>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { apiDomain } from '@/env/env'
-import { ReqGet, ReqPost, ReqPut, ReqPatch, ReqDelete } from '@/utils/request'
+import { selfReq } from '@/utils/request'
+import layout from '@/layouts/flex.vue'
+
 export default Vue.extend({
+  components: {
+    layout,
+  },
   created() {
-    ReqGet(apiDomain.self, 'example', { id: '1' }).then((res: {}) =>
-      console.log(res),
+    this.$store.dispatch(
+      'setLocaleAsync',
+      location.pathname.split('/')[1] || 'en',
     )
-    ReqPost(apiDomain.self, 'example', { data: new Date() }).then((res: {}) =>
-      console.log(res),
-    )
-    ReqPut(apiDomain.self, 'example', { data: {} }).then((res: {}) =>
-      console.log(res),
-    )
-    ReqPatch(apiDomain.self, 'example', { d: 4 }).then((res: {}) =>
-      console.log(res),
-    )
-    ReqDelete(apiDomain.self, 'example', { e: 5 }).then((res: {}) =>
-      console.log(res),
-    )
+    selfReq
+      .Get({ path: 'example', query: { id: '1' } })
+      .then((res: {}) => console.log(res))
+    selfReq.Post({ path: 'example' }).then((res: {}) => console.log(res))
+    selfReq
+      .Put({ path: 'example', payload: { data: {} } })
+      .then((res: {}) => console.log(res))
+    selfReq.Patch({ path: 'example' }).then((res: {}) => console.log(res))
+    selfReq.Delete({ path: 'example' }).then((res: {}) => console.log(res))
   },
 })
 </script>
-
 <style lang="scss">
-@import './scss/variable.scss';
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import './scss/global.scss';
 </style>

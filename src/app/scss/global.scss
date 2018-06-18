@@ -5,3 +5,12 @@
 @media (min-width: 640px) {
   @include flexGridSystem(12);
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}

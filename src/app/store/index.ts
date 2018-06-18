@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex, { Store } from 'vuex'
-import zhTw from './lang/zh-tw'
-
+import locale from './lang/locale'
 Vue.use(Vuex)
-export default new Store(zhTw)
+export default new Store({
+  modules: {
+    locale,
+  },
+})

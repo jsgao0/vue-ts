@@ -107,8 +107,10 @@ const resFn = (req, res, method, filePath) => {
           expects: JSON.parse(fs.readFileSync(`${filePath}/req.json`, 'utf8')),
         })
   if (result) {
+    res.status(200)
     res.json(JSON.parse(fs.readFileSync(`${filePath}/success.json`, 'utf8')))
   } else {
+    res.status(400)
     res.json(JSON.parse(fs.readFileSync(`${filePath}/fail.json`, 'utf8')))
   }
 }
