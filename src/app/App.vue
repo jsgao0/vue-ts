@@ -1,18 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <layout>
     <router-view/>
-  </div>
+  </layout>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import { apiDomain } from '@/env/env'
 import { ReqGet, ReqPost, ReqPut, ReqPatch, ReqDelete } from '@/utils/request'
+import layout from '@/layouts/example.vue'
+import { register } from '@/utils/manageStoreModules'
+import locale from '@/store/lang/locale'
+import en from '@/store/lang/en'
+
+register([
+  {
+    name: 'locale',
+    val: locale,
+  },
+  {
+    name: 'en',
+    val: en,
+  },
+])
+
 export default Vue.extend({
+  components: {
+    layout,
+  },
   created() {
+    this.$store.dispatch('setLocaleAsync', 'en')
     ReqGet(apiDomain.self, 'example', { id: '1' }).then((res: {}) =>
       console.log(res),
     )
@@ -31,24 +47,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style lang="scss">
-@import './scss/variable.scss';
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>

@@ -15,6 +15,4 @@ export default {
       text: string,
     ): string => state.lang[text] || '',
   },
-  mutations: {},
-  actions: {},
 }
