@@ -12,10 +12,13 @@ export default Vue.extend({
     layout,
   },
   created() {
-    this.$store.dispatch(
-      'setLocaleAsync',
-      location.pathname.split('/')[1] || 'en',
-    )
+    switch (location.pathname.split('/')[1]) {
+      case 'zh-tw':
+        this.$store.dispatch('setLocaleAsync', 'zh-tw')
+        break
+      default:
+        this.$store.dispatch('setLocaleAsync', 'en')
+    }
   },
 })
 </script>

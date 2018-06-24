@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import(/* webpackChunkName: "Home" */ './Home.vue')
-const Error = () => import(/* webpackChunkName: "Error" */ './Error.vue')
+const ErrorPage = () => import(/* webpackChunkName: "Error" */ './Error.vue')
 Vue.use(Router)
 
 export default new Router({
@@ -25,7 +25,7 @@ export default new Router({
     {
       path: '*',
       name: 'error',
-      component: Error,
+      component: ErrorPage,
     },
   ],
 })
