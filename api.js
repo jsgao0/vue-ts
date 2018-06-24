@@ -70,7 +70,6 @@ const getType = (val) => {
 }
 
 const typeCheck = ({ val, expect, required }) => {
-  console.log(val, expect, required)
   const result = required
     ? getType(expect) === getType(val)
     : getType(val) !== types.Undefined
