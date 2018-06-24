@@ -16,7 +16,7 @@ if (!exist(dist)) {
 }
 const copyFolderRecursive = (filePath) => {
   if (exist(filePath)) {
-    fs.readdirSync(filePath).forEach((file, index) => {
+    fs.readdirSync(filePath).forEach((file) => {
       const curPath = `${filePath}/${file}`
       const distPath = `${dist}/${file}`
       if (fs.lstatSync(curPath).isDirectory()) {

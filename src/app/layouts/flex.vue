@@ -18,7 +18,7 @@ import zhTw from '@/store/lang/zh-tw'
 import { register, unregister } from '@/utils/manageStoreModules'
 
 export default Vue.extend({
-  name: 'layout',
+  name: 'Layout',
   components: {
     vHeader,
   },

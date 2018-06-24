@@ -12,7 +12,7 @@ const exist = (filePath) => {
 }
 const deleteFolderRecursive = (filePath) => {
   if (exist(filePath)) {
-    fs.readdirSync(filePath).forEach((file, index) => {
+    fs.readdirSync(filePath).forEach((file) => {
       const curPath = `${filePath}/${file}`
       if (fs.lstatSync(curPath).isDirectory()) {
         deleteFolderRecursive(curPath)

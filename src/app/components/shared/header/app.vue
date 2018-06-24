@@ -1,8 +1,8 @@
 <template>
   <header class="col-12">
-    <img class="logo-spin"
-         :src="logoPng">
-    <slot></slot>
+    <img :src="logoPng"
+         class="logo-spin">
+    <slot/>
   </header>
 </template>
 <script lang="ts">
@@ -10,7 +10,7 @@ import Vue from 'vue'
 import { assetsPath } from '@/env/env'
 
 export default Vue.extend({
-  name: 'v-header',
+  name: 'VHeader',
   data() {
     return {
       logoPng: `${assetsPath}/logo.png`,

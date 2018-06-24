@@ -14,7 +14,7 @@
   "homepage": "https://github.com/KenFront/vue-ts#readme",
   "main": "src/app/index.ts",
   "scripts": {
-    "lint": "prettier --write 'src/**/*.{js,ts,tsx,scss}' && tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint": "prettier --write 'src/**/*.{js,ts,tsx,scss}' && eslint src/**/*.{js,vue} --fix && tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "clean": "node scripts/deleteFolder",
     "web:dev": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.dev.js",
     "web:prod": "npm run clean build && webpack --progress --hide-modules --config webpack/webpack.config.prod.js",
@@ -137,14 +137,14 @@
       "quote-props": [
         "error",
         "as-needed"
-      ]
+      ],
+      "vue/max-attributes-per-line": "off"
     }
   },
   "eslintIgnore": [
     "build/**/",
     "coverage/**/",
-    "node_modules/**/",
-    "storybook/**/"
+    "node_modules/**/"
   ],
   "prettier": {
     "semi": false,

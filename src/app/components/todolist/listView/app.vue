@@ -7,6 +7,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'list-view',
+  name: 'ListView',
 })
 </script>

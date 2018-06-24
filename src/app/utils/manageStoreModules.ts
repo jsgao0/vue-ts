@@ -12,11 +12,15 @@ interface RegisterModule {
 
 export const register = (modules: RegisterModule[]) => {
   modules.forEach((e) => {
-    store.registerModule([e.name], e.val)
+    if (!store.state.hasOwnProperty(e.name)) {
+      store.registerModule([e.name], e.val)
+    }
   })
 }
 export const unregister = (modules: string[]) => {
   modules.forEach((e) => {
-    store.unregisterModule([e])
+    if (store.state.hasOwnProperty(e)) {
+      store.unregisterModule([e])
+    }
   })
 }
