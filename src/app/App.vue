@@ -24,7 +24,15 @@ export default Vue.extend({
     selfReq
       .Put({ path: 'list/1', payload: { name: '2', description: '2' } })
       .then((res: {}) => console.log(res))
-    selfReq.Patch({ path: 'list/1', payload: { name: '3', description: '3' } }).then((res: {}) => console.log(res))
+    selfReq
+      .Patch({ path: 'list/1', payload: { name: '3' } })
+      .then((res: {}) => console.log(res))
+    selfReq
+      .Patch({ path: 'list/1', payload: { name: '3', description: '3' } })
+      .then((res: {}) => console.log(res))
+    selfReq
+      .Patch({ path: 'list/1', payload: { description: 3 } })
+      .then((res: {}) => console.log(res))
     selfReq.Delete({ path: 'list/1' }).then((res: {}) => console.log(res))
   },
 })
