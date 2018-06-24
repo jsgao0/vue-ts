@@ -1,7 +1,7 @@
 <template>
   <div class="root flex ali-center jus-center">
     <v-header>
-      <h1>Vue & TS</h1>
+      <h1>Vue.ts</h1>
       <select v-model="language">
         <option value="en">English</option>
         <option value="zh-tw">繁體中文</option>

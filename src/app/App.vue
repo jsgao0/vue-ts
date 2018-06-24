@@ -5,7 +5,6 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { selfReq } from '@/utils/request'
 import layout from '@/layouts/flex.vue'
 
 export default Vue.extend({
@@ -13,19 +12,13 @@ export default Vue.extend({
     layout,
   },
   created() {
-    this.$store.dispatch(
-      'setLocaleAsync',
-      location.pathname.split('/')[1] || 'en',
-    )
-    selfReq
-      .Get({ path: 'example', query: { id: '1' } })
-      .then((res: {}) => console.log(res))
-    selfReq.Post({ path: 'example' }).then((res: {}) => console.log(res))
-    selfReq
-      .Put({ path: 'example', payload: { data: {} } })
-      .then((res: {}) => console.log(res))
-    selfReq.Patch({ path: 'example' }).then((res: {}) => console.log(res))
-    selfReq.Delete({ path: 'example' }).then((res: {}) => console.log(res))
+    switch (location.pathname.split('/')[1]) {
+      case 'zh-tw':
+        this.$store.dispatch('setLocaleAsync', 'zh-tw')
+        break
+      default:
+        this.$store.dispatch('setLocaleAsync', 'en')
+    }
   },
 })
 </script>

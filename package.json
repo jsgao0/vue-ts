@@ -26,12 +26,12 @@
     "test:unit": "jest --coverage"
   },
   "devDependencies": {
-    "@types/jest": "^23.1.0",
-    "@types/node": "^10.3.3",
+    "@types/jest": "^23.1.1",
+    "@types/node": "^10.3.5",
     "@vue/test-utils": "^1.0.0-beta.19",
     "animate.css": "^3.6.1",
-    "autoprefixer": "^8.6.2",
-    "babel-eslint": "^8.2.3",
+    "autoprefixer": "^8.6.3",
+    "babel-eslint": "^8.2.5",
     "copy-webpack-plugin": "^4.5.1",
     "core-js": "^2.5.7",
     "css-loader": "^0.28.11",
@@ -51,14 +51,14 @@
     "ts-loader": "^4.4.1",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2",
-    "uglifyjs-webpack-plugin": "^1.2.5",
+    "uglifyjs-webpack-plugin": "^1.2.6",
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0",
     "vue-loader": "^15.2.4",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1",
-    "webpack": "^4.12.0",
+    "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-manifest-plugin": "^2.0.3",
@@ -104,7 +104,7 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "@/(.*)$": "<rootDir>/$1",
+      "@/(.*)$": "<rootDir>/src/app/$1",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/src/test/styleMock.js"
     }

@@ -14,9 +14,9 @@ interface CommonReq {
 }
 
 function handleErrors(res: Response) {
-  if (res.status !== 200) {
-    throw Error(res.statusText)
-  }
+  // if (!res.ok) {
+  //   throw Error(res.statusText)
+  // }
   return res
 }
 
@@ -37,7 +37,7 @@ class HttpRequest {
     })
       .then(handleErrors)
       .then((res) => res.json())
-      .catch((exp) => ({ msg: exp }))
+      .catch((exp) => exp)
   }
   public async Delete(params: CommonReq) {
     return await this.common('DELETE', params)
@@ -62,7 +62,7 @@ class HttpRequest {
     })
       .then(handleErrors)
       .then((res) => res.json())
-      .catch((exp) => ({ msg: exp }))
+      .catch((exp) => exp.json())
   }
 }
 
