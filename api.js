@@ -90,9 +90,11 @@ const typeCheck = ({ val, expect }) => {
 }
 
 const checkReqFn = ({ vals, expects }) => {
-  return Object.keys(expects).every((e) =>
-    typeCheck({ expect: expects[e], val: vals[e] }),
-  )
+  return Object.keys(expects).length > 0
+    ? Object.keys(expects).every((e) =>
+        typeCheck({ expect: expects[e], val: vals[e] }),
+      )
+    : true
 }
 
 const resFn = (req, res, method, filePath) => {
@@ -106,6 +108,7 @@ const resFn = (req, res, method, filePath) => {
           vals: req.body,
           expects: JSON.parse(fs.readFileSync(`${filePath}/req.json`, 'utf8')),
         })
+
   if (result) {
     res.status(200)
     res.json(JSON.parse(fs.readFileSync(`${filePath}/success.json`, 'utf8')))

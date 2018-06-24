@@ -17,15 +17,15 @@ export default Vue.extend({
       'setLocaleAsync',
       location.pathname.split('/')[1] || 'en',
     )
+    selfReq.Get({ path: 'list/1' }).then((res: {}) => console.log(res))
     selfReq
-      .Get({ path: 'example', query: { id: '1' } })
+      .Post({ path: 'list', payload: { name: '1', description: '1' } })
       .then((res: {}) => console.log(res))
-    selfReq.Post({ path: 'example' }).then((res: {}) => console.log(res))
     selfReq
-      .Put({ path: 'example', payload: { data: {} } })
+      .Put({ path: 'list/1', payload: { name: '2', description: '2' } })
       .then((res: {}) => console.log(res))
-    selfReq.Patch({ path: 'example' }).then((res: {}) => console.log(res))
-    selfReq.Delete({ path: 'example' }).then((res: {}) => console.log(res))
+    selfReq.Patch({ path: 'list/1', payload: { name: '3', description: '3' } }).then((res: {}) => console.log(res))
+    selfReq.Delete({ path: 'list/1' }).then((res: {}) => console.log(res))
   },
 })
 </script>

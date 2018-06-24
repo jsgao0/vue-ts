@@ -14,7 +14,7 @@ interface CommonReq {
 }
 
 function handleErrors(res: Response) {
-  if (res.status !== 200) {
+  if (!res.ok) {
     throw Error(res.statusText)
   }
   return res
